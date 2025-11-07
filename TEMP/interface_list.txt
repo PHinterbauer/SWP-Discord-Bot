@@ -1,0 +1,39 @@
+interface DBMSPort:
+    def get_data(table: str, filters: dict = None) -> list[dict]
+    def insert_data(table: str, data: dict) -> bool
+    def update_data(table: str, filters: dict, data: dict) -> bool
+    def delete_data(table: str, filters: dict) -> bool
+    def get_random_entry(table: str, category: str = None) -> dict
+
+interface ModelPort (Business Logic):
+    # Übersetzen & Features
+    def use(data: str = None) -> str
+
+    # Logging
+    def log_command(server_id: int, user_id: int, command: str)
+
+    # Periodisches DM-Checking (für View-Icon)
+    def check_for_new_dms() -> bool
+
+    interface DishPort:
+        def use(category: str) -> str
+
+    interface TranslatePort:
+        def use(mode: str) -> str
+
+    interface FunFactPort:
+        def use() -> str
+
+interface ControllerPort:
+    def handle_command(server_id: int, user_id: int, command: str, args: list[str])
+    def handle_message(server_id: int, user_id: int, text: str)
+    def handle_dm(user_id: int, text: str)
+
+    # Web Admin
+    def get_server_overview() -> list[dict]
+    def send_admin_message(server_id: int, channel_id: int, message: str)
+
+interface ViewPort:
+    def send_message(target_id: int, text: str)
+    def render_admin_panel(servers: list[dict])
+    def update_dm_icon(visible: bool)
