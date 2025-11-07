@@ -1,7 +1,7 @@
 [project]
 name = "discord-bot"
 version = "0.1.0"
-requires-python = ">=3.12"
+requires-python = ">=3.11"
 description = "..."
 readme = "README.md"
 
@@ -13,8 +13,8 @@ build-backend = "setuptools.build_meta"
 where = ["src"]
 include = ["discord-bot*"]  # optional but nice
 
-# [tool.setuptools.package-data]
-# "discord-bot" = ["py.typed"]
+[tool.setuptools.package-data]
+"discord-bot" = ["py.typed"]
 
 [tool.setuptools]
 include-package-data = true
