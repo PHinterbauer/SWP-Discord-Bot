@@ -1,4 +1,12 @@
 .venv
+
+# Build / packaging artifacts
 dist/
 build/
+*.egg-info/
+
+# PEP 582 local packages
 __pypackages__/
+
+# Caches
+*__cache__
